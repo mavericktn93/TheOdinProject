@@ -1,0 +1,62 @@
+#title{
+    text-align: center;
+}
+
+#user{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#rockSelect{
+    background-color: cadetblue;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#paperSelect{
+    background-color: cadetblue;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#scissorSelect{
+    background-color: cadetblue;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.iconSelect{
+    width:100px;
+}
+
+.hrLine{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 30vw;
+}
+
+#btnDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#btnGame {
+    height: 40px;
+    width: 400px;
+}
