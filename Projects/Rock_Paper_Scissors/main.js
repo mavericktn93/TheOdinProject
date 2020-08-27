@@ -1,8 +1,12 @@
-/* Before we start, we deactivate the buttons. */
-
 const iconSelect = document.querySelectorAll('.selectDiv');
-const btnGame = document.querySelector('#btnGame');
-const textWinner = document.querySelector('h2');
+let btnGame = document.querySelector('#btnGame');
+let textWinner = document.querySelector('h2');
+const newGame = document.querySelector('#newGame');
+let score = document.querySelector('.score');
+let computerScore = 0;
+let userScore = 0;
+
+
 for (let i = 0; i < iconSelect.length; i++){
     iconSelect[i].setAttribute("style", "pointer-events: none;");
 }
@@ -34,41 +38,56 @@ function computerPlay () {
     }
     if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
         console.log("You Win! Rock beat Scissors");
+        userScore++;
         return "user";
     }
     if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
         console.log("You Lose! Paper beat Rock");
+        computerScore++;
         return "computer";
     }
     if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
         console.log("You Win! Paper beat Rock");
+        userScore++;
         return "user";
     }
     if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
-        console.log("You Lose! Scissors beat Paper"); (playerScore == computerScore) 
+        console.log("You Lose! Scissors beat Paper");
+        computerScore++;
         return "computer";
     }
     if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
         console.log("You Win! Scissors beat Paper");
+        userScore++;
         return "user";
     }
     if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
         console.log("You Lose! Rock beat Scissors");
+        computerScore++;
         return "computer";
     }
   }
 
   function whoWin (){
       let winner = playRound();
-      if(winner == "user") textWinner.textContent = "YOU WIN!";
-      else if (winner == "computer") textWinner.textContent = "YOU LOSE!";
-      else textWinner.textContent = "THIS IS A DRAW!";
+      score.textContent = "YOU " + userScore + " - " + computerScore + " COM";
       for (let i = 0; i < iconSelect.length; i++){
         iconSelect[i].setAttribute("style", "pointer-events: none;");
       }
-      btnGame.textContent = "Play Again";
-      btnGame.disabled = false;
-      
+      checkGame();
+  }
+
+  function checkGame(){
+    if(userScore == 5) {
+        newGame.style.display = "block";
+        textWinner.textContent =  "You Win!";
+    } else if (computerScore == 5){
+        newGame.style.display = "block";
+        textWinner.textContent =  "You Lose!";
+    } else {
+        btnGame.textContent = "Play Again";
+        btnGame.disabled = false;
+    }
   }
 
   function activeBtn(){
@@ -77,8 +96,20 @@ function computerPlay () {
         iconSelect[i].addEventListener("click", whoWin);
     }
     textWinner.textContent = "Are you ready?";
-    btnGame.textContent = "Select Your Hand";
+    btnGame.textContent = "SELECT YOUR HAND";
     btnGame.disabled = true;
   }
 
+  function restartGame(){
+    newGame.style.display = "none";
+    computerScore = 0;
+    userScore = 0;
+    score.textContent = "";
+    textWinner.textContent = "Are you ready?";
+    btnGame.textContent = "START";
+    btnGame.disabled = false;
+  }
+
   btnGame.addEventListener("click", activeBtn);
+  newGame.addEventListener("click", restartGame);
+
