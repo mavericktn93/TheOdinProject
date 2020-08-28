@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Etch a Sketch</title>
+  <meta name="description" content="Etch a Sketch">
+  <meta name="author" content="Juanki">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <header id="header">
+    <h1 id="titleHeader">Etch a Sketch</h1>
+    <nav id="menu">
+        <ul>
+            <li><button class="btn" id="newBtn">New Grid</button></li>
+            <li>
+              <input class="btn" readonly id="chooseColor" data-jscolor="" onchange="getColor(this)" value="Choose a color"></input>
+            </li>
+        </ul>
+    </nav>
+  </header>
+  
+  <div id="container"></div>
+
+  <footer id="footer">
+    <p>Design by Juanki</p>
+  </footer>
+  
+  <script src="js/jscolor.js"></script>
+  <script src="js/main.js"></script>
+  
+</body>
+</html>
